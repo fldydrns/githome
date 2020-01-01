@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Berserker index page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <script type="text/javascript" src="/js/jquery-3.4.0.min.js" th:src="@{/js/jquery-3.4.0.min.js}"></script>
+    <script type="text/javascript" src="/js/main.js" th:src="@{/js/main.js}"></script>
+    <script type="text/javascript" th:inline="javascript">
+        $(document).ready(function(){
+            //alert("test0");
+
+            $('#save').click(function(){
+                alert("save1");
+                $.ajax({
+                  url: "/save",
+                  type: "POST",
+                  cache: false,
+                  dataType: "json",
+                  data: {
+                    id: $('#id').val(),
+                    name: $('#name').val()
+                  },
+                  success: function(obj){
+                    $("#team").value = obj.team;
+                  },
+                  error: function(XMLHttpRequest, textStatus, errorThrown){
+                    alert("error:" + XMLHttpRequest);
+                        alert("status:" + textStatus);
+                    alert("errorThrown:" + errorThrown);
+                  }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<p class="container">Hello, berserker!</p>
+</body>
+</html>

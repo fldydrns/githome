@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Berserker index page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/jquery-ui.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/ui.jqgrid.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/jquery.multiselect.css}"/>
+
+    <script type="text/javascript" src="/js/jquery-3.4.0.min.js" th:src="@{/js/jquery-3.4.0.min.js}"></script>
+    <script type="text/javascript" src="/js/jquery.jqGrid.min.js" th:src="@{/js/jquery.jqGrid.min.js}"></script>
+    <script type="text/javascript" src="/js/jquery-ui.min.js" th:src="@{/js/jquery-ui.min.js}"></script>
+    <script type="text/javascript" src="/js/jquery.multiselect.js" th:src="@{/js/jquery.multiselect.js}"></script>
+    <!--script type="text/javascript" multiSelectsrc="/js/i18n/jquery.ui.datepicker-ja.min.js" th:src="@{/js/i18n/jquery.ui.datepicker-ja.min.js}"></script-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+    <!--script type="text/javascript" src="js/jquery.ui.datepicker-ja.js"></script-->
+    <script type="text/javascript" src="/js/i18n/grid.locale-ja.js" th:src="@{/js/i18n/grid.locale-ja.js}"></script>
+    <script type="text/javascript" src="/js/common.js" th:src="@{/js/common.js}"></script>
+    <script type="text/javascript" src="/js/main.js" th:src="@{/js/main.js}"></script>
+    <script type="text/javascript" th:inline="javascript">
+        /*$(document).ready(function(){
+            alert("test0");
+
+        });*/
+    </script>
+</head>
+
+<body>
+<div class="container">
+    <header>
+        <h1 th:text="'Spring Boot'"></h1>
+    </header>
+</div>
+
+<div id="A001">
+    <form method="post" action="/save1" th:object="${employee}" id="#A001Form">
+        <ul>
+            <li><label>ＩＤ：　　　<input type="text" th:field="*{id}" size="30" maxlength="20"></label></li>
+            <li><label>名前：　　　<input type="text" th:field="*{name}" size="30" maxlength="20"></label></li>
+            <li><label>チーム：　　<input type="text" th:field="*{team}" size="30" maxlength="20"></label></li>
+            <li><label>ポジション：<input type="text" th:field="*{position}" size="30" maxlength="20"></label></li>
+        </ul>
+
+        <div style="position:absolute;left:450px;top:100px;">
+            <table>
+                <tr>
+                    <td>
+                        <div style="background-color:#CCC; padding : 20px;">
+                            <label>日付：</label>
+                            <input type="text" id="txtYmd" value="" length="100px"/>
+                        </div>
+                    </td>
+                    <td>
+                        <select id="multiSelect" multiple="multiple" size="7">
+                            <option value="option1">項目1</option>
+                            <option value="option2">項目2</option>
+                            <option value="option3">項目3</option>
+                            <option value="option4">項目4</option>
+                            <option value="option5">項目5</option>
+                            <option value="option6">項目6</option>
+                            <option value="option7">項目7</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <input type="button" id="save" name="save" value="保存"/>
+        <input type="button" id="grid" name="grid" value="jqgrid固定データ"/>
+        <input type="button" id="search" name="search" value="検索"/>
+        <!--button type=button id="grid" name="grid">jqgrid表示<button/-->
+
+        <br/>
+        <div>
+            <table id="list">
+            </table>
+            <div id="pg01"></div>
+        </div>
+
+        <br/><br/>
+
+        <div>
+            <table id="gridReq">
+            </table>
+            <div id="pg02"></div>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>
